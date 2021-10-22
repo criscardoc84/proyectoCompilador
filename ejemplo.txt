@@ -1,0 +1,14 @@
+name = log("Digita tu nombre");
+elec = log("Hola +name+ espero este bien, deseas sumar o restar?");
+num1 = log("Digita el primer numero de la operacion.");
+num2 = log("Digita el segundo numero de la operacion.");
+if elec == "sumar"
+restl = num1 + num2;
+print("El resultado es "+result)
+else
+  if elec == "restar"
+  restl = num1 - num2;
+  print("El resultado es "+result)
+  else
+  print("opcion no valida")
+
