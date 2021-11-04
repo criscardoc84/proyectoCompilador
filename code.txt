@@ -1,0 +1,23 @@
+imp random;
+
+df sumarLista(lista):
+    sum=0;
+    fr i in rng(0,ln(lista)):
+        sum=sum+lista[i];
+    rtrn sum;
+ 
+df imprimirLista(lista,nombre):
+    fr i in rng(0,ln(lista)):
+        prt (nombre + '[' + stg(i) + ']=' + stg(lista[i]));
+ 
+df leerLista():
+    lista=[];
+    i=0;
+    whl i < 5:
+        lista.ppd(nt(random.rndt(0, 5)));
+        i=i+1;
+    rtrn lista;
+
+A=leerLista();
+imprimirLista(A,'A');
+prt ('Suma = ' + stg(sumarLista(A)));
