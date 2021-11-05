@@ -51,4 +51,20 @@ def t_ID(t):
       t.type = t.value
   return t
 
+def t_COMMENT(t):
+  r'\#.*'
+  pass
 
+def t_CONST(t):
+  r'\d+'
+  t.value = int(t.value)
+  return t
+
+def t_error(t):
+  print "Caracter Invalido '%s'" % t.value[0]
+  t.lexer.sikip(1)
+  
+#Esta linea va a variar de acuerdo a donde gaurdas el archivo.
+directorio = '/c/Users/crist/Documents/GitHub/proyectoCompilador/src/test'
+archivo = buscarFicheros(directorio)
+test = directorio
