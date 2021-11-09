@@ -4,27 +4,35 @@ import codecs
 import os
 import sys
 
-tokens = [
-  'ID','NUMBER','PLUS','MINUS','TIMES','DIVIDE','ODD','ASSIGN','NE','LT','LTE','GT','GTE','LPARENT','RPARENT','COMMA','SEMICOLOM','DOT','UPDATE'
-]
+#tokens = [
+  #'ID','NUMBER','PLUS','MINUS','TIMES','DIVIDE','ODD','ASSIGN','NE','LT','LTE','GT','GTE','LPARENT','RPARENT','COMMA','SEMICOLOM','DOT','UPDATE'
+#]
 
-reservadas = {
-  'begin':'BEGIN',
-  'end':'END',
-  'if':'IF',
-  'then':'THEN',
-  'while':'WHILE',
-  'do':'DO',
-  'call':'CALL',
-  'const':'CONST',
-  'int':'INT',
-  'procedure':'PROCEDURE',
-  'out':'OUT',
-  'in':'IN',
-  'else':'ELSE',
-}
+#reservadas = {
+  #'begin':'BEGIN',
+  #'end':'END',
+  #'if':'IF',
+  #'then':'THEN',
+  #'while':'WHILE',
+  #'do':'DO',
+  #'call':'CALL',
+  #'const':'CONST',
+  #'int':'INT',
+  #'procedure':'PROCEDURE',
+  #'out':'OUT',
+  #'in':'IN',
+  #'else':'ELSE',
+#}
 
-tokens = tokens+list(reservadas.values())
+#tokens = tokens+list(reservadas.values())
+
+reservadas = [
+  'BEGIN','END','IF','THEN','WHILE','DO','CALL','CONST','VAR','PROCEDURE','OUT','IN','ELSE'
+  ]
+
+tokens = reservadas + [
+  'ID','NUMBER','PLUS','MINUS','TIMES','DIVIDE','ODD','ASSIGN','NE','LT','LTE','GT','GTE','LPARENT', 'RPARENT','COMMA','SEMMICOLOM','DOT','UPDATE'
+  ]
 
 t_ignore = '\t '
 t_PLUS = r'\+'
@@ -47,23 +55,27 @@ t_UPDATE = r':='
 
 def t_ID(t):
   r'[a-zA-Z_][a-zA-Z0-9_]*'
-  if t.value.upper() in keywords:
+  if t.value.upper() in reservadas:
       t.value = t.value.upper()
       t.type = t.value
   return t
+
+def t_newline(t):
+  r'\n+'
+  t.lexer.lineno += len(t.value)
 
 def t_COMMENT(t):
   r'\#.*'
   pass
 
-def t_CONST(t):
+def t_NUMBER(t):
   r'\d+'
   t.value = int(t.value)
   return t
 
 def t_error(t):
   print("Caracter Invalido '%s'" % t.value[0])
-  t.lexer.sikip(1)
+  t.lexer.skip(1)
   
 def buscarFicheros(directorio):
   ficheros = []
@@ -79,21 +91,27 @@ def buscarFicheros(directorio):
     cont= cont+1
     
   while respuesta == False:
-    numArchivo = raw_input('\nNumero del test: ')
-    for file in file:
+    numArchivo = input('\nNumero del test: ')
+    for file in files:
       if file == files[int(numArchivo)-1]:
         respuesta = True
         break
+
+  print("Se escogio \"%s\" \n" %files[int(numArchivo)-1])
+  
+  return files[int(numArchivo)-1]
   
 #Esta linea va a variar de acuerdo a donde gaurdas el archivo.
-#C:\Users\crist\Documents\GitHub\proyectoCompilador\Lexico\test
-#C:\Users\crist\Documents\GitHub\proyectoCompilador\Lexico\test
-directorio = '/c/Users/crist/Documents/GitHub/proyectoCompilador/Lexico/test'
+#\Users\crist\Documents\GitHub\proyectoCompilador\Lexico\ptest
+#/Users/crist/Documents/GitHub/proyectoCompilador/Lexico/ptest
+directorio = '/Users/crist/Documents/GitHub/proyectoCompilador/Lexico/ptest/'
 archivo = buscarFicheros(directorio)
 test = directorio+archivo
 fp = codecs.open(test,"r","utf-8")
 cadena = fp.read()
 fp.close()
+
+analizador = lex.lex()
 
 analizador.input(cadena)
 
