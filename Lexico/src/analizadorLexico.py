@@ -60,9 +60,10 @@ def t_ID(t):
       t.type = t.value
   return t
 
+#No reconoce el salto de linea.
 def t_newline(t):
-  r'\n+'
-  t.lexer.lineno += len(t.value)
+	r'\n+'
+	t.lexer.lineno += len(t.value)
 
 def t_COMMENT(t):
   r'\#.*'
@@ -74,7 +75,7 @@ def t_NUMBER(t):
   return t
 
 def t_error(t):
-  print("Caracter Invalido '%s'" % t.value[0])
+  print(" Caracter Invalido'%s'" % t.value[0])
   t.lexer.skip(1)
   
 def buscarFicheros(directorio):
