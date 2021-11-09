@@ -105,7 +105,7 @@ def buscarFicheros(directorio):
 #Esta linea va a variar de acuerdo a donde gaurdas el archivo.
 #\Users\crist\Documents\GitHub\proyectoCompilador\Lexico\ptest
 #/Users/crist/Documents/GitHub/proyectoCompilador/Lexico/ptest
-directorio = '/Users/crist/Documents/GitHub/proyectoCompilador/Lexico/ptest/'
+directorio = '/Users/crist/Documents/GitHub/proyectoCompilador/compiler/test/'
 archivo = buscarFicheros(directorio)
 test = directorio+archivo
 fp = codecs.open(test,"r","utf-8")
