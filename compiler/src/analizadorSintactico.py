@@ -258,7 +258,7 @@ def traducir(result):
 	graphFile.close()
 	print("El programa traducido se guardo en \"graphviztrhee.vz\"")
 
-directorio = '/Users/sebas/Documents/Compiladores/pl0/analizador version 2/test/'
+directorio = '/Users/crist/Documents/GitHub/proyectoCompilador/compiler/test/'
 archivo = buscarFicheros(directorio)
 test = directorio+archivo
 fp = codecs.open(test,"r","utf-8")
@@ -269,7 +269,7 @@ yacc.yacc()
 result = yacc.parse(cadena,debug=1)
 
 #result.imprimir(" ")
-#print result.traducir()
+#print(result.traducir())
 traducir(result)
 
 
