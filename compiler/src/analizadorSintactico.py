@@ -272,6 +272,4 @@ result = yacc.parse(cadena,debug=1)
 #print(result.traducir())
 traducir(result)
 
-
-
-#print result
+#http://www.webgraphviz.com/

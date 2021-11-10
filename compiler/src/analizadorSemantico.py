@@ -229,7 +229,7 @@ class varDecl1(Nodo):
 		self.son1.imprimir(" "+ident)
 
 		print(ident + "Nodo: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -250,7 +250,7 @@ class identList1(Nodo):
 		self.son1.imprimir(" "+ident)
 
 		print(ident + "Nodo: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -273,7 +273,7 @@ class identList2(Nodo):
 		self.son2.imprimir(" "+ident)
 
 		print(ident + "Nodo: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -359,7 +359,7 @@ class statement2(Nodo):
 		self.son1.imprimir(" "+ident)
 
 		print(ident + "Nodo: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -380,7 +380,7 @@ class statement3(Nodo):
 		self.son1.imprimir(" "+ident)
 
 		print(ident + "Nodo: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -408,7 +408,7 @@ class statement4(Nodo):
 			self.son2.imprimir(" "+ident)
 
 		print(ident + "Nodo: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -437,7 +437,7 @@ class statement5(Nodo):
 			self.son2.imprimir(" "+ident)
 
 		print(ident + "Nodo: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -460,7 +460,7 @@ class statementList1(Nodo):
 		self.son1.imprimir(" "+ident)
 
 		print(ident + "Nodo: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -483,7 +483,7 @@ class statementList2(Nodo):
 		self.son2.imprimir(" "+ident)
 
 		print(ident + "Nodo: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -506,7 +506,7 @@ class condition1(Nodo):
 		self.son1.imprimir(" "+ident)
 
 		print(ident + "Nodo: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -556,7 +556,7 @@ class relation1(Nodo):
 		self.son1.imprimir(" "+ident)
 
 		print(ident + "Nodo: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -577,7 +577,7 @@ class relation2(Nodo):
 		self.son1.imprimir(" "+ident)
 
 		print(ident + "Nodo: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -598,7 +598,7 @@ class relation3(Nodo):
 		self.son1.imprimir(" "+ident)
 
 		print(ident + "Nodo: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -619,7 +619,7 @@ class relation4(Nodo):
 		self.son1.imprimir(" "+ident)
 
 		print(ident + "Nodo: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -640,7 +640,7 @@ class relation5(Nodo):
 		self.son1.imprimir(" "+ident)
 
 		print(ident + "Nodo: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -661,7 +661,7 @@ class relation6(Nodo):
 		self.son1.imprimir(" "+ident)
 
 		print(ident + "Nodo: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -682,7 +682,7 @@ class expression1(Nodo):
 		self.son1.imprimir(" "+ident)
 
 		print(ident + "Nodo: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -705,7 +705,7 @@ class expression2(Nodo):
 		self.son2.imprimir(" "+ident)
 
 		print(ident + "Nodo: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -757,7 +757,7 @@ class addingOperator1(Nodo):
 		self.son1.imprimir(" "+ident)
 
 		print(ident + "Nodo: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -778,7 +778,7 @@ class addingOperator2(Nodo):
 		self.son1.imprimir(" "+ident)
 
 		print(ident + "Nodo: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -799,7 +799,7 @@ class term1(Nodo):
 		self.son1.imprimir(" "+ident)
 
 		print(ident + "Nodo: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -849,7 +849,7 @@ class multiplyingOperator1(Nodo):
 		self.son1.imprimir(" "+ident)
 
 		print(ident + "Nodo: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -870,7 +870,7 @@ class multiplyingOperator2(Nodo):
 		self.son1.imprimir(" "+ident)
 
 		print(ident + "Nodo: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -891,7 +891,7 @@ class factor1(Nodo):
 		self.son1.imprimir(" "+ident)
 
 		print(ident + "Nodo: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -912,7 +912,7 @@ class factor2(Nodo):
 		self.son1.imprimir(" "+ident)
 
 		print(ident + "Nodo: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -933,7 +933,7 @@ class factor3(Nodo):
 		self.son1.imprimir(" "+ident)
 
 		print(ident + "Nodo: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -951,7 +951,7 @@ class Id(Nodo):
 
 	def imprimir(self,ident):
 		print(ident+"ID: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -964,9 +964,7 @@ class Assign(Nodo):
 		self.name = name
 
 	def imprimir(self,ident):
-
 		print(ident+"Assign: "+self.name)
-			
 
 	def traducir(self):
 		global txt
@@ -982,7 +980,7 @@ class NE(Nodo):
 
 	def imprimir(self,ident):
 		print(ident+"NE: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -996,7 +994,7 @@ class LT(Nodo):
 
 	def imprimir(self,ident):
 		print(ident+"LT: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -1010,7 +1008,7 @@ class GT(Nodo):
 
 	def imprimir(self,ident):
 		print(ident+"GT: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -1024,7 +1022,7 @@ class LTE(Nodo):
 
 	def imprimir(self,ident):
 		print(ident+"LTE: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -1038,7 +1036,7 @@ class GTE(Nodo):
 
 	def imprimir(self,ident):
 		print(ident+"GTE: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -1052,7 +1050,7 @@ class Plus(Nodo):
 
 	def imprimir(self,ident):
 		print(ident+"Plus: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -1066,7 +1064,7 @@ class Minus(Nodo):
 
 	def imprimir(self,ident):
 		print(ident+"Minus: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -1080,7 +1078,7 @@ class Times(Nodo):
 
 	def imprimir(self,ident):
 		print(ident+"Times: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -1094,7 +1092,7 @@ class Divide(Nodo):
 
 	def imprimir(self,ident):
 		print(ident+"Divide: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -1108,7 +1106,7 @@ class Update(Nodo):
 
 	def imprimir(self,ident):
 		print(ident+"Update: "+self.name)
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
@@ -1122,7 +1120,7 @@ class Number(Nodo):
 
 	def imprimir(self,ident):
 		print(ident+"Number: "+str(self.name))
-			
+
 	def traducir(self):
 		global txt
 		id = incremetarContador()
