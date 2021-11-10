@@ -1,0 +1,1225 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    DOT
+    ELSE
+    IN
+    OUT
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> block
+Rule 2     block -> constDecl varDecl procDecl statement
+Rule 3     constDecl -> CONST constAssignmentList SEMMICOLOM
+Rule 4     constDecl -> empty
+Rule 5     constAssignmentList -> ID ASSIGN NUMBER
+Rule 6     constAssignmentList -> constAssignmentList COMMA ID ASSIGN NUMBER
+Rule 7     varDecl -> VAR identList SEMMICOLOM
+Rule 8     varDecl -> empty
+Rule 9     identList -> ID
+Rule 10    identList -> identList COMMA ID
+Rule 11    procDecl -> procDecl PROCEDURE ID SEMMICOLOM block SEMMICOLOM
+Rule 12    procDecl -> empty
+Rule 13    statement -> ID UPDATE expression
+Rule 14    statement -> CALL ID
+Rule 15    statement -> BEGIN statementList END
+Rule 16    statement -> IF condition THEN statement
+Rule 17    statement -> WHILE condition DO statement
+Rule 18    statement -> empty
+Rule 19    statementList -> statement
+Rule 20    statementList -> statementList SEMMICOLOM statement
+Rule 21    condition -> ODD expression
+Rule 22    condition -> expression relation expression
+Rule 23    relation -> ASSIGN
+Rule 24    relation -> NE
+Rule 25    relation -> LT
+Rule 26    relation -> GT
+Rule 27    relation -> LTE
+Rule 28    relation -> GTE
+Rule 29    expression -> term
+Rule 30    expression -> addingOperator term
+Rule 31    expression -> expression addingOperator term
+Rule 32    addingOperator -> PLUS
+Rule 33    addingOperator -> MINUS
+Rule 34    term -> factor
+Rule 35    term -> term multiplyingOperator factor
+Rule 36    multiplyingOperator -> TIMES
+Rule 37    multiplyingOperator -> DIVIDE
+Rule 38    factor -> ID
+Rule 39    factor -> NUMBER
+Rule 40    factor -> LPARENT expression RPARENT
+Rule 41    empty -> <empty>
+
+Terminals, with rules where they appear
+
+ASSIGN               : 5 6 23
+BEGIN                : 15
+CALL                 : 14
+COMMA                : 6 10
+CONST                : 3
+DIVIDE               : 37
+DO                   : 17
+DOT                  : 
+ELSE                 : 
+END                  : 15
+GT                   : 26
+GTE                  : 28
+ID                   : 5 6 9 10 11 13 14 38
+IF                   : 16
+IN                   : 
+LPARENT              : 40
+LT                   : 25
+LTE                  : 27
+MINUS                : 33
+NE                   : 24
+NUMBER               : 5 6 39
+ODD                  : 21
+OUT                  : 
+PLUS                 : 32
+PROCEDURE            : 11
+RPARENT              : 40
+SEMMICOLOM           : 3 7 11 11 20
+THEN                 : 16
+TIMES                : 36
+UPDATE               : 13
+VAR                  : 7
+WHILE                : 17
+error                : 
+
+Nonterminals, with rules where they appear
+
+addingOperator       : 30 31
+block                : 1 11
+condition            : 16 17
+constAssignmentList  : 3 6
+constDecl            : 2
+empty                : 4 8 12 18
+expression           : 13 21 22 22 31 40
+factor               : 34 35
+identList            : 7 10
+multiplyingOperator  : 35
+procDecl             : 2 11
+program              : 0
+relation             : 22
+statement            : 2 16 17 19 20
+statementList        : 15 20
+term                 : 29 30 31 35
+varDecl              : 2
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . block
+    (2) block -> . constDecl varDecl procDecl statement
+    (3) constDecl -> . CONST constAssignmentList SEMMICOLOM
+    (4) constDecl -> . empty
+    (41) empty -> .
+
+    CONST           shift and go to state 4
+    VAR             reduce using rule 41 (empty -> .)
+    PROCEDURE       reduce using rule 41 (empty -> .)
+    ID              reduce using rule 41 (empty -> .)
+    CALL            reduce using rule 41 (empty -> .)
+    BEGIN           reduce using rule 41 (empty -> .)
+    IF              reduce using rule 41 (empty -> .)
+    WHILE           reduce using rule 41 (empty -> .)
+    $end            reduce using rule 41 (empty -> .)
+
+    program                        shift and go to state 1
+    block                          shift and go to state 2
+    constDecl                      shift and go to state 3
+    empty                          shift and go to state 5
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> block .
+
+    $end            reduce using rule 1 (program -> block .)
+
+
+state 3
+
+    (2) block -> constDecl . varDecl procDecl statement
+    (7) varDecl -> . VAR identList SEMMICOLOM
+    (8) varDecl -> . empty
+    (41) empty -> .
+
+    VAR             shift and go to state 7
+    PROCEDURE       reduce using rule 41 (empty -> .)
+    ID              reduce using rule 41 (empty -> .)
+    CALL            reduce using rule 41 (empty -> .)
+    BEGIN           reduce using rule 41 (empty -> .)
+    IF              reduce using rule 41 (empty -> .)
+    WHILE           reduce using rule 41 (empty -> .)
+    $end            reduce using rule 41 (empty -> .)
+    SEMMICOLOM      reduce using rule 41 (empty -> .)
+
+    varDecl                        shift and go to state 6
+    empty                          shift and go to state 8
+
+state 4
+
+    (3) constDecl -> CONST . constAssignmentList SEMMICOLOM
+    (5) constAssignmentList -> . ID ASSIGN NUMBER
+    (6) constAssignmentList -> . constAssignmentList COMMA ID ASSIGN NUMBER
+
+    ID              shift and go to state 10
+
+    constAssignmentList            shift and go to state 9
+
+state 5
+
+    (4) constDecl -> empty .
+
+    VAR             reduce using rule 4 (constDecl -> empty .)
+    PROCEDURE       reduce using rule 4 (constDecl -> empty .)
+    ID              reduce using rule 4 (constDecl -> empty .)
+    CALL            reduce using rule 4 (constDecl -> empty .)
+    BEGIN           reduce using rule 4 (constDecl -> empty .)
+    IF              reduce using rule 4 (constDecl -> empty .)
+    WHILE           reduce using rule 4 (constDecl -> empty .)
+    $end            reduce using rule 4 (constDecl -> empty .)
+    SEMMICOLOM      reduce using rule 4 (constDecl -> empty .)
+
+
+state 6
+
+    (2) block -> constDecl varDecl . procDecl statement
+    (11) procDecl -> . procDecl PROCEDURE ID SEMMICOLOM block SEMMICOLOM
+    (12) procDecl -> . empty
+    (41) empty -> .
+
+    PROCEDURE       reduce using rule 41 (empty -> .)
+    ID              reduce using rule 41 (empty -> .)
+    CALL            reduce using rule 41 (empty -> .)
+    BEGIN           reduce using rule 41 (empty -> .)
+    IF              reduce using rule 41 (empty -> .)
+    WHILE           reduce using rule 41 (empty -> .)
+    $end            reduce using rule 41 (empty -> .)
+    SEMMICOLOM      reduce using rule 41 (empty -> .)
+
+    procDecl                       shift and go to state 11
+    empty                          shift and go to state 12
+
+state 7
+
+    (7) varDecl -> VAR . identList SEMMICOLOM
+    (9) identList -> . ID
+    (10) identList -> . identList COMMA ID
+
+    ID              shift and go to state 14
+
+    identList                      shift and go to state 13
+
+state 8
+
+    (8) varDecl -> empty .
+
+    PROCEDURE       reduce using rule 8 (varDecl -> empty .)
+    ID              reduce using rule 8 (varDecl -> empty .)
+    CALL            reduce using rule 8 (varDecl -> empty .)
+    BEGIN           reduce using rule 8 (varDecl -> empty .)
+    IF              reduce using rule 8 (varDecl -> empty .)
+    WHILE           reduce using rule 8 (varDecl -> empty .)
+    $end            reduce using rule 8 (varDecl -> empty .)
+    SEMMICOLOM      reduce using rule 8 (varDecl -> empty .)
+
+
+state 9
+
+    (3) constDecl -> CONST constAssignmentList . SEMMICOLOM
+    (6) constAssignmentList -> constAssignmentList . COMMA ID ASSIGN NUMBER
+
+    SEMMICOLOM      shift and go to state 15
+    COMMA           shift and go to state 16
+
+
+state 10
+
+    (5) constAssignmentList -> ID . ASSIGN NUMBER
+
+    ASSIGN          shift and go to state 17
+
+
+state 11
+
+    (2) block -> constDecl varDecl procDecl . statement
+    (11) procDecl -> procDecl . PROCEDURE ID SEMMICOLOM block SEMMICOLOM
+    (13) statement -> . ID UPDATE expression
+    (14) statement -> . CALL ID
+    (15) statement -> . BEGIN statementList END
+    (16) statement -> . IF condition THEN statement
+    (17) statement -> . WHILE condition DO statement
+    (18) statement -> . empty
+    (41) empty -> .
+
+    PROCEDURE       shift and go to state 19
+    ID              shift and go to state 20
+    CALL            shift and go to state 21
+    BEGIN           shift and go to state 22
+    IF              shift and go to state 23
+    WHILE           shift and go to state 24
+    $end            reduce using rule 41 (empty -> .)
+    SEMMICOLOM      reduce using rule 41 (empty -> .)
+
+    statement                      shift and go to state 18
+    empty                          shift and go to state 25
+
+state 12
+
+    (12) procDecl -> empty .
+
+    PROCEDURE       reduce using rule 12 (procDecl -> empty .)
+    ID              reduce using rule 12 (procDecl -> empty .)
+    CALL            reduce using rule 12 (procDecl -> empty .)
+    BEGIN           reduce using rule 12 (procDecl -> empty .)
+    IF              reduce using rule 12 (procDecl -> empty .)
+    WHILE           reduce using rule 12 (procDecl -> empty .)
+    $end            reduce using rule 12 (procDecl -> empty .)
+    SEMMICOLOM      reduce using rule 12 (procDecl -> empty .)
+
+
+state 13
+
+    (7) varDecl -> VAR identList . SEMMICOLOM
+    (10) identList -> identList . COMMA ID
+
+    SEMMICOLOM      shift and go to state 26
+    COMMA           shift and go to state 27
+
+
+state 14
+
+    (9) identList -> ID .
+
+    SEMMICOLOM      reduce using rule 9 (identList -> ID .)
+    COMMA           reduce using rule 9 (identList -> ID .)
+
+
+state 15
+
+    (3) constDecl -> CONST constAssignmentList SEMMICOLOM .
+
+    VAR             reduce using rule 3 (constDecl -> CONST constAssignmentList SEMMICOLOM .)
+    PROCEDURE       reduce using rule 3 (constDecl -> CONST constAssignmentList SEMMICOLOM .)
+    ID              reduce using rule 3 (constDecl -> CONST constAssignmentList SEMMICOLOM .)
+    CALL            reduce using rule 3 (constDecl -> CONST constAssignmentList SEMMICOLOM .)
+    BEGIN           reduce using rule 3 (constDecl -> CONST constAssignmentList SEMMICOLOM .)
+    IF              reduce using rule 3 (constDecl -> CONST constAssignmentList SEMMICOLOM .)
+    WHILE           reduce using rule 3 (constDecl -> CONST constAssignmentList SEMMICOLOM .)
+    $end            reduce using rule 3 (constDecl -> CONST constAssignmentList SEMMICOLOM .)
+    SEMMICOLOM      reduce using rule 3 (constDecl -> CONST constAssignmentList SEMMICOLOM .)
+
+
+state 16
+
+    (6) constAssignmentList -> constAssignmentList COMMA . ID ASSIGN NUMBER
+
+    ID              shift and go to state 28
+
+
+state 17
+
+    (5) constAssignmentList -> ID ASSIGN . NUMBER
+
+    NUMBER          shift and go to state 29
+
+
+state 18
+
+    (2) block -> constDecl varDecl procDecl statement .
+
+    $end            reduce using rule 2 (block -> constDecl varDecl procDecl statement .)
+    SEMMICOLOM      reduce using rule 2 (block -> constDecl varDecl procDecl statement .)
+
+
+state 19
+
+    (11) procDecl -> procDecl PROCEDURE . ID SEMMICOLOM block SEMMICOLOM
+
+    ID              shift and go to state 30
+
+
+state 20
+
+    (13) statement -> ID . UPDATE expression
+
+    UPDATE          shift and go to state 31
+
+
+state 21
+
+    (14) statement -> CALL . ID
+
+    ID              shift and go to state 32
+
+
+state 22
+
+    (15) statement -> BEGIN . statementList END
+    (19) statementList -> . statement
+    (20) statementList -> . statementList SEMMICOLOM statement
+    (13) statement -> . ID UPDATE expression
+    (14) statement -> . CALL ID
+    (15) statement -> . BEGIN statementList END
+    (16) statement -> . IF condition THEN statement
+    (17) statement -> . WHILE condition DO statement
+    (18) statement -> . empty
+    (41) empty -> .
+
+    ID              shift and go to state 20
+    CALL            shift and go to state 21
+    BEGIN           shift and go to state 22
+    IF              shift and go to state 23
+    WHILE           shift and go to state 24
+    END             reduce using rule 41 (empty -> .)
+    SEMMICOLOM      reduce using rule 41 (empty -> .)
+
+    statementList                  shift and go to state 33
+    statement                      shift and go to state 34
+    empty                          shift and go to state 25
+
+state 23
+
+    (16) statement -> IF . condition THEN statement
+    (21) condition -> . ODD expression
+    (22) condition -> . expression relation expression
+    (29) expression -> . term
+    (30) expression -> . addingOperator term
+    (31) expression -> . expression addingOperator term
+    (34) term -> . factor
+    (35) term -> . term multiplyingOperator factor
+    (32) addingOperator -> . PLUS
+    (33) addingOperator -> . MINUS
+    (38) factor -> . ID
+    (39) factor -> . NUMBER
+    (40) factor -> . LPARENT expression RPARENT
+
+    ODD             shift and go to state 36
+    PLUS            shift and go to state 41
+    MINUS           shift and go to state 42
+    ID              shift and go to state 43
+    NUMBER          shift and go to state 44
+    LPARENT         shift and go to state 45
+
+    condition                      shift and go to state 35
+    expression                     shift and go to state 37
+    term                           shift and go to state 38
+    addingOperator                 shift and go to state 39
+    factor                         shift and go to state 40
+
+state 24
+
+    (17) statement -> WHILE . condition DO statement
+    (21) condition -> . ODD expression
+    (22) condition -> . expression relation expression
+    (29) expression -> . term
+    (30) expression -> . addingOperator term
+    (31) expression -> . expression addingOperator term
+    (34) term -> . factor
+    (35) term -> . term multiplyingOperator factor
+    (32) addingOperator -> . PLUS
+    (33) addingOperator -> . MINUS
+    (38) factor -> . ID
+    (39) factor -> . NUMBER
+    (40) factor -> . LPARENT expression RPARENT
+
+    ODD             shift and go to state 36
+    PLUS            shift and go to state 41
+    MINUS           shift and go to state 42
+    ID              shift and go to state 43
+    NUMBER          shift and go to state 44
+    LPARENT         shift and go to state 45
+
+    condition                      shift and go to state 46
+    expression                     shift and go to state 37
+    term                           shift and go to state 38
+    addingOperator                 shift and go to state 39
+    factor                         shift and go to state 40
+
+state 25
+
+    (18) statement -> empty .
+
+    $end            reduce using rule 18 (statement -> empty .)
+    SEMMICOLOM      reduce using rule 18 (statement -> empty .)
+    END             reduce using rule 18 (statement -> empty .)
+
+
+state 26
+
+    (7) varDecl -> VAR identList SEMMICOLOM .
+
+    PROCEDURE       reduce using rule 7 (varDecl -> VAR identList SEMMICOLOM .)
+    ID              reduce using rule 7 (varDecl -> VAR identList SEMMICOLOM .)
+    CALL            reduce using rule 7 (varDecl -> VAR identList SEMMICOLOM .)
+    BEGIN           reduce using rule 7 (varDecl -> VAR identList SEMMICOLOM .)
+    IF              reduce using rule 7 (varDecl -> VAR identList SEMMICOLOM .)
+    WHILE           reduce using rule 7 (varDecl -> VAR identList SEMMICOLOM .)
+    $end            reduce using rule 7 (varDecl -> VAR identList SEMMICOLOM .)
+    SEMMICOLOM      reduce using rule 7 (varDecl -> VAR identList SEMMICOLOM .)
+
+
+state 27
+
+    (10) identList -> identList COMMA . ID
+
+    ID              shift and go to state 47
+
+
+state 28
+
+    (6) constAssignmentList -> constAssignmentList COMMA ID . ASSIGN NUMBER
+
+    ASSIGN          shift and go to state 48
+
+
+state 29
+
+    (5) constAssignmentList -> ID ASSIGN NUMBER .
+
+    SEMMICOLOM      reduce using rule 5 (constAssignmentList -> ID ASSIGN NUMBER .)
+    COMMA           reduce using rule 5 (constAssignmentList -> ID ASSIGN NUMBER .)
+
+
+state 30
+
+    (11) procDecl -> procDecl PROCEDURE ID . SEMMICOLOM block SEMMICOLOM
+
+    SEMMICOLOM      shift and go to state 49
+
+
+state 31
+
+    (13) statement -> ID UPDATE . expression
+    (29) expression -> . term
+    (30) expression -> . addingOperator term
+    (31) expression -> . expression addingOperator term
+    (34) term -> . factor
+    (35) term -> . term multiplyingOperator factor
+    (32) addingOperator -> . PLUS
+    (33) addingOperator -> . MINUS
+    (38) factor -> . ID
+    (39) factor -> . NUMBER
+    (40) factor -> . LPARENT expression RPARENT
+
+    PLUS            shift and go to state 41
+    MINUS           shift and go to state 42
+    ID              shift and go to state 43
+    NUMBER          shift and go to state 44
+    LPARENT         shift and go to state 45
+
+    expression                     shift and go to state 50
+    term                           shift and go to state 38
+    addingOperator                 shift and go to state 39
+    factor                         shift and go to state 40
+
+state 32
+
+    (14) statement -> CALL ID .
+
+    $end            reduce using rule 14 (statement -> CALL ID .)
+    SEMMICOLOM      reduce using rule 14 (statement -> CALL ID .)
+    END             reduce using rule 14 (statement -> CALL ID .)
+
+
+state 33
+
+    (15) statement -> BEGIN statementList . END
+    (20) statementList -> statementList . SEMMICOLOM statement
+
+    END             shift and go to state 51
+    SEMMICOLOM      shift and go to state 52
+
+
+state 34
+
+    (19) statementList -> statement .
+
+    END             reduce using rule 19 (statementList -> statement .)
+    SEMMICOLOM      reduce using rule 19 (statementList -> statement .)
+
+
+state 35
+
+    (16) statement -> IF condition . THEN statement
+
+    THEN            shift and go to state 53
+
+
+state 36
+
+    (21) condition -> ODD . expression
+    (29) expression -> . term
+    (30) expression -> . addingOperator term
+    (31) expression -> . expression addingOperator term
+    (34) term -> . factor
+    (35) term -> . term multiplyingOperator factor
+    (32) addingOperator -> . PLUS
+    (33) addingOperator -> . MINUS
+    (38) factor -> . ID
+    (39) factor -> . NUMBER
+    (40) factor -> . LPARENT expression RPARENT
+
+    PLUS            shift and go to state 41
+    MINUS           shift and go to state 42
+    ID              shift and go to state 43
+    NUMBER          shift and go to state 44
+    LPARENT         shift and go to state 45
+
+    expression                     shift and go to state 54
+    term                           shift and go to state 38
+    addingOperator                 shift and go to state 39
+    factor                         shift and go to state 40
+
+state 37
+
+    (22) condition -> expression . relation expression
+    (31) expression -> expression . addingOperator term
+    (23) relation -> . ASSIGN
+    (24) relation -> . NE
+    (25) relation -> . LT
+    (26) relation -> . GT
+    (27) relation -> . LTE
+    (28) relation -> . GTE
+    (32) addingOperator -> . PLUS
+    (33) addingOperator -> . MINUS
+
+    ASSIGN          shift and go to state 57
+    NE              shift and go to state 58
+    LT              shift and go to state 59
+    GT              shift and go to state 60
+    LTE             shift and go to state 61
+    GTE             shift and go to state 62
+    PLUS            shift and go to state 41
+    MINUS           shift and go to state 42
+
+    relation                       shift and go to state 55
+    addingOperator                 shift and go to state 56
+
+state 38
+
+    (29) expression -> term .
+    (35) term -> term . multiplyingOperator factor
+    (36) multiplyingOperator -> . TIMES
+    (37) multiplyingOperator -> . DIVIDE
+
+    ASSIGN          reduce using rule 29 (expression -> term .)
+    NE              reduce using rule 29 (expression -> term .)
+    LT              reduce using rule 29 (expression -> term .)
+    GT              reduce using rule 29 (expression -> term .)
+    LTE             reduce using rule 29 (expression -> term .)
+    GTE             reduce using rule 29 (expression -> term .)
+    PLUS            reduce using rule 29 (expression -> term .)
+    MINUS           reduce using rule 29 (expression -> term .)
+    $end            reduce using rule 29 (expression -> term .)
+    SEMMICOLOM      reduce using rule 29 (expression -> term .)
+    END             reduce using rule 29 (expression -> term .)
+    THEN            reduce using rule 29 (expression -> term .)
+    DO              reduce using rule 29 (expression -> term .)
+    RPARENT         reduce using rule 29 (expression -> term .)
+    TIMES           shift and go to state 64
+    DIVIDE          shift and go to state 65
+
+    multiplyingOperator            shift and go to state 63
+
+state 39
+
+    (30) expression -> addingOperator . term
+    (34) term -> . factor
+    (35) term -> . term multiplyingOperator factor
+    (38) factor -> . ID
+    (39) factor -> . NUMBER
+    (40) factor -> . LPARENT expression RPARENT
+
+    ID              shift and go to state 43
+    NUMBER          shift and go to state 44
+    LPARENT         shift and go to state 45
+
+    term                           shift and go to state 66
+    factor                         shift and go to state 40
+
+state 40
+
+    (34) term -> factor .
+
+    TIMES           reduce using rule 34 (term -> factor .)
+    DIVIDE          reduce using rule 34 (term -> factor .)
+    ASSIGN          reduce using rule 34 (term -> factor .)
+    NE              reduce using rule 34 (term -> factor .)
+    LT              reduce using rule 34 (term -> factor .)
+    GT              reduce using rule 34 (term -> factor .)
+    LTE             reduce using rule 34 (term -> factor .)
+    GTE             reduce using rule 34 (term -> factor .)
+    PLUS            reduce using rule 34 (term -> factor .)
+    MINUS           reduce using rule 34 (term -> factor .)
+    $end            reduce using rule 34 (term -> factor .)
+    SEMMICOLOM      reduce using rule 34 (term -> factor .)
+    END             reduce using rule 34 (term -> factor .)
+    THEN            reduce using rule 34 (term -> factor .)
+    DO              reduce using rule 34 (term -> factor .)
+    RPARENT         reduce using rule 34 (term -> factor .)
+
+
+state 41
+
+    (32) addingOperator -> PLUS .
+
+    ID              reduce using rule 32 (addingOperator -> PLUS .)
+    NUMBER          reduce using rule 32 (addingOperator -> PLUS .)
+    LPARENT         reduce using rule 32 (addingOperator -> PLUS .)
+
+
+state 42
+
+    (33) addingOperator -> MINUS .
+
+    ID              reduce using rule 33 (addingOperator -> MINUS .)
+    NUMBER          reduce using rule 33 (addingOperator -> MINUS .)
+    LPARENT         reduce using rule 33 (addingOperator -> MINUS .)
+
+
+state 43
+
+    (38) factor -> ID .
+
+    TIMES           reduce using rule 38 (factor -> ID .)
+    DIVIDE          reduce using rule 38 (factor -> ID .)
+    ASSIGN          reduce using rule 38 (factor -> ID .)
+    NE              reduce using rule 38 (factor -> ID .)
+    LT              reduce using rule 38 (factor -> ID .)
+    GT              reduce using rule 38 (factor -> ID .)
+    LTE             reduce using rule 38 (factor -> ID .)
+    GTE             reduce using rule 38 (factor -> ID .)
+    PLUS            reduce using rule 38 (factor -> ID .)
+    MINUS           reduce using rule 38 (factor -> ID .)
+    $end            reduce using rule 38 (factor -> ID .)
+    SEMMICOLOM      reduce using rule 38 (factor -> ID .)
+    END             reduce using rule 38 (factor -> ID .)
+    THEN            reduce using rule 38 (factor -> ID .)
+    DO              reduce using rule 38 (factor -> ID .)
+    RPARENT         reduce using rule 38 (factor -> ID .)
+
+
+state 44
+
+    (39) factor -> NUMBER .
+
+    TIMES           reduce using rule 39 (factor -> NUMBER .)
+    DIVIDE          reduce using rule 39 (factor -> NUMBER .)
+    ASSIGN          reduce using rule 39 (factor -> NUMBER .)
+    NE              reduce using rule 39 (factor -> NUMBER .)
+    LT              reduce using rule 39 (factor -> NUMBER .)
+    GT              reduce using rule 39 (factor -> NUMBER .)
+    LTE             reduce using rule 39 (factor -> NUMBER .)
+    GTE             reduce using rule 39 (factor -> NUMBER .)
+    PLUS            reduce using rule 39 (factor -> NUMBER .)
+    MINUS           reduce using rule 39 (factor -> NUMBER .)
+    $end            reduce using rule 39 (factor -> NUMBER .)
+    SEMMICOLOM      reduce using rule 39 (factor -> NUMBER .)
+    END             reduce using rule 39 (factor -> NUMBER .)
+    THEN            reduce using rule 39 (factor -> NUMBER .)
+    DO              reduce using rule 39 (factor -> NUMBER .)
+    RPARENT         reduce using rule 39 (factor -> NUMBER .)
+
+
+state 45
+
+    (40) factor -> LPARENT . expression RPARENT
+    (29) expression -> . term
+    (30) expression -> . addingOperator term
+    (31) expression -> . expression addingOperator term
+    (34) term -> . factor
+    (35) term -> . term multiplyingOperator factor
+    (32) addingOperator -> . PLUS
+    (33) addingOperator -> . MINUS
+    (38) factor -> . ID
+    (39) factor -> . NUMBER
+    (40) factor -> . LPARENT expression RPARENT
+
+    PLUS            shift and go to state 41
+    MINUS           shift and go to state 42
+    ID              shift and go to state 43
+    NUMBER          shift and go to state 44
+    LPARENT         shift and go to state 45
+
+    expression                     shift and go to state 67
+    term                           shift and go to state 38
+    addingOperator                 shift and go to state 39
+    factor                         shift and go to state 40
+
+state 46
+
+    (17) statement -> WHILE condition . DO statement
+
+    DO              shift and go to state 68
+
+
+state 47
+
+    (10) identList -> identList COMMA ID .
+
+    SEMMICOLOM      reduce using rule 10 (identList -> identList COMMA ID .)
+    COMMA           reduce using rule 10 (identList -> identList COMMA ID .)
+
+
+state 48
+
+    (6) constAssignmentList -> constAssignmentList COMMA ID ASSIGN . NUMBER
+
+    NUMBER          shift and go to state 69
+
+
+state 49
+
+    (11) procDecl -> procDecl PROCEDURE ID SEMMICOLOM . block SEMMICOLOM
+    (2) block -> . constDecl varDecl procDecl statement
+    (3) constDecl -> . CONST constAssignmentList SEMMICOLOM
+    (4) constDecl -> . empty
+    (41) empty -> .
+
+    CONST           shift and go to state 4
+    VAR             reduce using rule 41 (empty -> .)
+    PROCEDURE       reduce using rule 41 (empty -> .)
+    ID              reduce using rule 41 (empty -> .)
+    CALL            reduce using rule 41 (empty -> .)
+    BEGIN           reduce using rule 41 (empty -> .)
+    IF              reduce using rule 41 (empty -> .)
+    WHILE           reduce using rule 41 (empty -> .)
+    SEMMICOLOM      reduce using rule 41 (empty -> .)
+
+    block                          shift and go to state 70
+    constDecl                      shift and go to state 3
+    empty                          shift and go to state 5
+
+state 50
+
+    (13) statement -> ID UPDATE expression .
+    (31) expression -> expression . addingOperator term
+    (32) addingOperator -> . PLUS
+    (33) addingOperator -> . MINUS
+
+    $end            reduce using rule 13 (statement -> ID UPDATE expression .)
+    SEMMICOLOM      reduce using rule 13 (statement -> ID UPDATE expression .)
+    END             reduce using rule 13 (statement -> ID UPDATE expression .)
+    PLUS            shift and go to state 41
+    MINUS           shift and go to state 42
+
+    addingOperator                 shift and go to state 56
+
+state 51
+
+    (15) statement -> BEGIN statementList END .
+
+    $end            reduce using rule 15 (statement -> BEGIN statementList END .)
+    SEMMICOLOM      reduce using rule 15 (statement -> BEGIN statementList END .)
+    END             reduce using rule 15 (statement -> BEGIN statementList END .)
+
+
+state 52
+
+    (20) statementList -> statementList SEMMICOLOM . statement
+    (13) statement -> . ID UPDATE expression
+    (14) statement -> . CALL ID
+    (15) statement -> . BEGIN statementList END
+    (16) statement -> . IF condition THEN statement
+    (17) statement -> . WHILE condition DO statement
+    (18) statement -> . empty
+    (41) empty -> .
+
+    ID              shift and go to state 20
+    CALL            shift and go to state 21
+    BEGIN           shift and go to state 22
+    IF              shift and go to state 23
+    WHILE           shift and go to state 24
+    END             reduce using rule 41 (empty -> .)
+    SEMMICOLOM      reduce using rule 41 (empty -> .)
+
+    statement                      shift and go to state 71
+    empty                          shift and go to state 25
+
+state 53
+
+    (16) statement -> IF condition THEN . statement
+    (13) statement -> . ID UPDATE expression
+    (14) statement -> . CALL ID
+    (15) statement -> . BEGIN statementList END
+    (16) statement -> . IF condition THEN statement
+    (17) statement -> . WHILE condition DO statement
+    (18) statement -> . empty
+    (41) empty -> .
+
+    ID              shift and go to state 20
+    CALL            shift and go to state 21
+    BEGIN           shift and go to state 22
+    IF              shift and go to state 23
+    WHILE           shift and go to state 24
+    $end            reduce using rule 41 (empty -> .)
+    SEMMICOLOM      reduce using rule 41 (empty -> .)
+    END             reduce using rule 41 (empty -> .)
+
+    statement                      shift and go to state 72
+    empty                          shift and go to state 25
+
+state 54
+
+    (21) condition -> ODD expression .
+    (31) expression -> expression . addingOperator term
+    (32) addingOperator -> . PLUS
+    (33) addingOperator -> . MINUS
+
+    THEN            reduce using rule 21 (condition -> ODD expression .)
+    DO              reduce using rule 21 (condition -> ODD expression .)
+    PLUS            shift and go to state 41
+    MINUS           shift and go to state 42
+
+    addingOperator                 shift and go to state 56
+
+state 55
+
+    (22) condition -> expression relation . expression
+    (29) expression -> . term
+    (30) expression -> . addingOperator term
+    (31) expression -> . expression addingOperator term
+    (34) term -> . factor
+    (35) term -> . term multiplyingOperator factor
+    (32) addingOperator -> . PLUS
+    (33) addingOperator -> . MINUS
+    (38) factor -> . ID
+    (39) factor -> . NUMBER
+    (40) factor -> . LPARENT expression RPARENT
+
+    PLUS            shift and go to state 41
+    MINUS           shift and go to state 42
+    ID              shift and go to state 43
+    NUMBER          shift and go to state 44
+    LPARENT         shift and go to state 45
+
+    expression                     shift and go to state 73
+    term                           shift and go to state 38
+    addingOperator                 shift and go to state 39
+    factor                         shift and go to state 40
+
+state 56
+
+    (31) expression -> expression addingOperator . term
+    (34) term -> . factor
+    (35) term -> . term multiplyingOperator factor
+    (38) factor -> . ID
+    (39) factor -> . NUMBER
+    (40) factor -> . LPARENT expression RPARENT
+
+    ID              shift and go to state 43
+    NUMBER          shift and go to state 44
+    LPARENT         shift and go to state 45
+
+    term                           shift and go to state 74
+    factor                         shift and go to state 40
+
+state 57
+
+    (23) relation -> ASSIGN .
+
+    PLUS            reduce using rule 23 (relation -> ASSIGN .)
+    MINUS           reduce using rule 23 (relation -> ASSIGN .)
+    ID              reduce using rule 23 (relation -> ASSIGN .)
+    NUMBER          reduce using rule 23 (relation -> ASSIGN .)
+    LPARENT         reduce using rule 23 (relation -> ASSIGN .)
+
+
+state 58
+
+    (24) relation -> NE .
+
+    PLUS            reduce using rule 24 (relation -> NE .)
+    MINUS           reduce using rule 24 (relation -> NE .)
+    ID              reduce using rule 24 (relation -> NE .)
+    NUMBER          reduce using rule 24 (relation -> NE .)
+    LPARENT         reduce using rule 24 (relation -> NE .)
+
+
+state 59
+
+    (25) relation -> LT .
+
+    PLUS            reduce using rule 25 (relation -> LT .)
+    MINUS           reduce using rule 25 (relation -> LT .)
+    ID              reduce using rule 25 (relation -> LT .)
+    NUMBER          reduce using rule 25 (relation -> LT .)
+    LPARENT         reduce using rule 25 (relation -> LT .)
+
+
+state 60
+
+    (26) relation -> GT .
+
+    PLUS            reduce using rule 26 (relation -> GT .)
+    MINUS           reduce using rule 26 (relation -> GT .)
+    ID              reduce using rule 26 (relation -> GT .)
+    NUMBER          reduce using rule 26 (relation -> GT .)
+    LPARENT         reduce using rule 26 (relation -> GT .)
+
+
+state 61
+
+    (27) relation -> LTE .
+
+    PLUS            reduce using rule 27 (relation -> LTE .)
+    MINUS           reduce using rule 27 (relation -> LTE .)
+    ID              reduce using rule 27 (relation -> LTE .)
+    NUMBER          reduce using rule 27 (relation -> LTE .)
+    LPARENT         reduce using rule 27 (relation -> LTE .)
+
+
+state 62
+
+    (28) relation -> GTE .
+
+    PLUS            reduce using rule 28 (relation -> GTE .)
+    MINUS           reduce using rule 28 (relation -> GTE .)
+    ID              reduce using rule 28 (relation -> GTE .)
+    NUMBER          reduce using rule 28 (relation -> GTE .)
+    LPARENT         reduce using rule 28 (relation -> GTE .)
+
+
+state 63
+
+    (35) term -> term multiplyingOperator . factor
+    (38) factor -> . ID
+    (39) factor -> . NUMBER
+    (40) factor -> . LPARENT expression RPARENT
+
+    ID              shift and go to state 43
+    NUMBER          shift and go to state 44
+    LPARENT         shift and go to state 45
+
+    factor                         shift and go to state 75
+
+state 64
+
+    (36) multiplyingOperator -> TIMES .
+
+    ID              reduce using rule 36 (multiplyingOperator -> TIMES .)
+    NUMBER          reduce using rule 36 (multiplyingOperator -> TIMES .)
+    LPARENT         reduce using rule 36 (multiplyingOperator -> TIMES .)
+
+
+state 65
+
+    (37) multiplyingOperator -> DIVIDE .
+
+    ID              reduce using rule 37 (multiplyingOperator -> DIVIDE .)
+    NUMBER          reduce using rule 37 (multiplyingOperator -> DIVIDE .)
+    LPARENT         reduce using rule 37 (multiplyingOperator -> DIVIDE .)
+
+
+state 66
+
+    (30) expression -> addingOperator term .
+    (35) term -> term . multiplyingOperator factor
+    (36) multiplyingOperator -> . TIMES
+    (37) multiplyingOperator -> . DIVIDE
+
+    ASSIGN          reduce using rule 30 (expression -> addingOperator term .)
+    NE              reduce using rule 30 (expression -> addingOperator term .)
+    LT              reduce using rule 30 (expression -> addingOperator term .)
+    GT              reduce using rule 30 (expression -> addingOperator term .)
+    LTE             reduce using rule 30 (expression -> addingOperator term .)
+    GTE             reduce using rule 30 (expression -> addingOperator term .)
+    PLUS            reduce using rule 30 (expression -> addingOperator term .)
+    MINUS           reduce using rule 30 (expression -> addingOperator term .)
+    $end            reduce using rule 30 (expression -> addingOperator term .)
+    SEMMICOLOM      reduce using rule 30 (expression -> addingOperator term .)
+    END             reduce using rule 30 (expression -> addingOperator term .)
+    THEN            reduce using rule 30 (expression -> addingOperator term .)
+    DO              reduce using rule 30 (expression -> addingOperator term .)
+    RPARENT         reduce using rule 30 (expression -> addingOperator term .)
+    TIMES           shift and go to state 64
+    DIVIDE          shift and go to state 65
+
+    multiplyingOperator            shift and go to state 63
+
+state 67
+
+    (40) factor -> LPARENT expression . RPARENT
+    (31) expression -> expression . addingOperator term
+    (32) addingOperator -> . PLUS
+    (33) addingOperator -> . MINUS
+
+    RPARENT         shift and go to state 76
+    PLUS            shift and go to state 41
+    MINUS           shift and go to state 42
+
+    addingOperator                 shift and go to state 56
+
+state 68
+
+    (17) statement -> WHILE condition DO . statement
+    (13) statement -> . ID UPDATE expression
+    (14) statement -> . CALL ID
+    (15) statement -> . BEGIN statementList END
+    (16) statement -> . IF condition THEN statement
+    (17) statement -> . WHILE condition DO statement
+    (18) statement -> . empty
+    (41) empty -> .
+
+    ID              shift and go to state 20
+    CALL            shift and go to state 21
+    BEGIN           shift and go to state 22
+    IF              shift and go to state 23
+    WHILE           shift and go to state 24
+    $end            reduce using rule 41 (empty -> .)
+    SEMMICOLOM      reduce using rule 41 (empty -> .)
+    END             reduce using rule 41 (empty -> .)
+
+    statement                      shift and go to state 77
+    empty                          shift and go to state 25
+
+state 69
+
+    (6) constAssignmentList -> constAssignmentList COMMA ID ASSIGN NUMBER .
+
+    SEMMICOLOM      reduce using rule 6 (constAssignmentList -> constAssignmentList COMMA ID ASSIGN NUMBER .)
+    COMMA           reduce using rule 6 (constAssignmentList -> constAssignmentList COMMA ID ASSIGN NUMBER .)
+
+
+state 70
+
+    (11) procDecl -> procDecl PROCEDURE ID SEMMICOLOM block . SEMMICOLOM
+
+    SEMMICOLOM      shift and go to state 78
+
+
+state 71
+
+    (20) statementList -> statementList SEMMICOLOM statement .
+
+    END             reduce using rule 20 (statementList -> statementList SEMMICOLOM statement .)
+    SEMMICOLOM      reduce using rule 20 (statementList -> statementList SEMMICOLOM statement .)
+
+
+state 72
+
+    (16) statement -> IF condition THEN statement .
+
+    $end            reduce using rule 16 (statement -> IF condition THEN statement .)
+    SEMMICOLOM      reduce using rule 16 (statement -> IF condition THEN statement .)
+    END             reduce using rule 16 (statement -> IF condition THEN statement .)
+
+
+state 73
+
+    (22) condition -> expression relation expression .
+    (31) expression -> expression . addingOperator term
+    (32) addingOperator -> . PLUS
+    (33) addingOperator -> . MINUS
+
+    THEN            reduce using rule 22 (condition -> expression relation expression .)
+    DO              reduce using rule 22 (condition -> expression relation expression .)
+    PLUS            shift and go to state 41
+    MINUS           shift and go to state 42
+
+    addingOperator                 shift and go to state 56
+
+state 74
+
+    (31) expression -> expression addingOperator term .
+    (35) term -> term . multiplyingOperator factor
+    (36) multiplyingOperator -> . TIMES
+    (37) multiplyingOperator -> . DIVIDE
+
+    ASSIGN          reduce using rule 31 (expression -> expression addingOperator term .)
+    NE              reduce using rule 31 (expression -> expression addingOperator term .)
+    LT              reduce using rule 31 (expression -> expression addingOperator term .)
+    GT              reduce using rule 31 (expression -> expression addingOperator term .)
+    LTE             reduce using rule 31 (expression -> expression addingOperator term .)
+    GTE             reduce using rule 31 (expression -> expression addingOperator term .)
+    PLUS            reduce using rule 31 (expression -> expression addingOperator term .)
+    MINUS           reduce using rule 31 (expression -> expression addingOperator term .)
+    $end            reduce using rule 31 (expression -> expression addingOperator term .)
+    SEMMICOLOM      reduce using rule 31 (expression -> expression addingOperator term .)
+    END             reduce using rule 31 (expression -> expression addingOperator term .)
+    THEN            reduce using rule 31 (expression -> expression addingOperator term .)
+    DO              reduce using rule 31 (expression -> expression addingOperator term .)
+    RPARENT         reduce using rule 31 (expression -> expression addingOperator term .)
+    TIMES           shift and go to state 64
+    DIVIDE          shift and go to state 65
+
+    multiplyingOperator            shift and go to state 63
+
+state 75
+
+    (35) term -> term multiplyingOperator factor .
+
+    TIMES           reduce using rule 35 (term -> term multiplyingOperator factor .)
+    DIVIDE          reduce using rule 35 (term -> term multiplyingOperator factor .)
+    ASSIGN          reduce using rule 35 (term -> term multiplyingOperator factor .)
+    NE              reduce using rule 35 (term -> term multiplyingOperator factor .)
+    LT              reduce using rule 35 (term -> term multiplyingOperator factor .)
+    GT              reduce using rule 35 (term -> term multiplyingOperator factor .)
+    LTE             reduce using rule 35 (term -> term multiplyingOperator factor .)
+    GTE             reduce using rule 35 (term -> term multiplyingOperator factor .)
+    PLUS            reduce using rule 35 (term -> term multiplyingOperator factor .)
+    MINUS           reduce using rule 35 (term -> term multiplyingOperator factor .)
+    $end            reduce using rule 35 (term -> term multiplyingOperator factor .)
+    SEMMICOLOM      reduce using rule 35 (term -> term multiplyingOperator factor .)
+    END             reduce using rule 35 (term -> term multiplyingOperator factor .)
+    THEN            reduce using rule 35 (term -> term multiplyingOperator factor .)
+    DO              reduce using rule 35 (term -> term multiplyingOperator factor .)
+    RPARENT         reduce using rule 35 (term -> term multiplyingOperator factor .)
+
+
+state 76
+
+    (40) factor -> LPARENT expression RPARENT .
+
+    TIMES           reduce using rule 40 (factor -> LPARENT expression RPARENT .)
+    DIVIDE          reduce using rule 40 (factor -> LPARENT expression RPARENT .)
+    ASSIGN          reduce using rule 40 (factor -> LPARENT expression RPARENT .)
+    NE              reduce using rule 40 (factor -> LPARENT expression RPARENT .)
+    LT              reduce using rule 40 (factor -> LPARENT expression RPARENT .)
+    GT              reduce using rule 40 (factor -> LPARENT expression RPARENT .)
+    LTE             reduce using rule 40 (factor -> LPARENT expression RPARENT .)
+    GTE             reduce using rule 40 (factor -> LPARENT expression RPARENT .)
+    PLUS            reduce using rule 40 (factor -> LPARENT expression RPARENT .)
+    MINUS           reduce using rule 40 (factor -> LPARENT expression RPARENT .)
+    $end            reduce using rule 40 (factor -> LPARENT expression RPARENT .)
+    SEMMICOLOM      reduce using rule 40 (factor -> LPARENT expression RPARENT .)
+    END             reduce using rule 40 (factor -> LPARENT expression RPARENT .)
+    THEN            reduce using rule 40 (factor -> LPARENT expression RPARENT .)
+    DO              reduce using rule 40 (factor -> LPARENT expression RPARENT .)
+    RPARENT         reduce using rule 40 (factor -> LPARENT expression RPARENT .)
+
+
+state 77
+
+    (17) statement -> WHILE condition DO statement .
+
+    $end            reduce using rule 17 (statement -> WHILE condition DO statement .)
+    SEMMICOLOM      reduce using rule 17 (statement -> WHILE condition DO statement .)
+    END             reduce using rule 17 (statement -> WHILE condition DO statement .)
+
+
+state 78
+
+    (11) procDecl -> procDecl PROCEDURE ID SEMMICOLOM block SEMMICOLOM .
+
+    PROCEDURE       reduce using rule 11 (procDecl -> procDecl PROCEDURE ID SEMMICOLOM block SEMMICOLOM .)
+    ID              reduce using rule 11 (procDecl -> procDecl PROCEDURE ID SEMMICOLOM block SEMMICOLOM .)
+    CALL            reduce using rule 11 (procDecl -> procDecl PROCEDURE ID SEMMICOLOM block SEMMICOLOM .)
+    BEGIN           reduce using rule 11 (procDecl -> procDecl PROCEDURE ID SEMMICOLOM block SEMMICOLOM .)
+    IF              reduce using rule 11 (procDecl -> procDecl PROCEDURE ID SEMMICOLOM block SEMMICOLOM .)
+    WHILE           reduce using rule 11 (procDecl -> procDecl PROCEDURE ID SEMMICOLOM block SEMMICOLOM .)
+    $end            reduce using rule 11 (procDecl -> procDecl PROCEDURE ID SEMMICOLOM block SEMMICOLOM .)
+    SEMMICOLOM      reduce using rule 11 (procDecl -> procDecl PROCEDURE ID SEMMICOLOM block SEMMICOLOM .)
+
