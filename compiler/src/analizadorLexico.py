@@ -87,6 +87,7 @@ def t_error(t):
 #  for base, dirs, files in os.walk(directorio):
 #    ficheros.append(files)
     
+#  for file in files:
 #    print(str(cont)+". "+file)
 #    cont= cont+1
     
@@ -107,7 +108,7 @@ def t_error(t):
 #archivo = buscarFicheros(directorio)
 #test = directorio+archivo
 #fp = codecs.open(test,"r","utf-8")
-#adena = fp.read()
+#cadena = fp.read()
 #fp.close()
 
 analizador = lex.lex()
